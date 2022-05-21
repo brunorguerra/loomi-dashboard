@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.aside`
-    position: fixed;
+    width: 8.8rem;
+    height: 96.4rem;
+
+    position: absolute;
     top: 10rem;
     left: 1.6rem;
-
-    width: 8.8rem;
-    height: calc(100% - 10rem);
+    bottom: 1.6rem;
 
     background-color: var(--shape);
     border-radius: 0.8rem;

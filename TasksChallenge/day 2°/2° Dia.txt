@@ -1,0 +1,1 @@
+- Desenvolvido o Layout do Dashboard (Header, aside, main {Home, Sales, ConversionFunnel, UserProfile, ProductsList}) responsivo ate min-width: 850px;

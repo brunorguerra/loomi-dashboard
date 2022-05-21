@@ -9,14 +9,14 @@ export const Container = styled.header`
     padding: 0 4rem;
     background-color: var(--shape);
     box-shadow: 0 0.3rem 0.6rem var(--boxShadow);
-    .link {
+    .link-header {
         width: 7rem;
         img {
             max-width: 100%;
             width: auto;
         }
     }
-    .profile {
+    .profile-header {
         display: flex;
         align-items: center;
         gap: 1rem;

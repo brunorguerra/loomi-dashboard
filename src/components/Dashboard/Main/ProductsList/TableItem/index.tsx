@@ -1,13 +1,27 @@
 import { CardSpecification } from "../CardSpecification";
 import { Item } from "./styles";
 
-export const TableItem = () => {
+interface TableItemProps {
+    productImagePath: string;
+    product: string;
+    colors: string[];
+    specifications: string[];
+    status: boolean;
+}
+
+export const TableItem = ({
+    productImagePath,
+    product,
+    colors,
+    specifications,
+    status,
+}: TableItemProps) => {
     return (
         <Item>
             <td>
                 <div className="product">
-                    <img src="./assets/banco.png" alt="" />
-                    <p>Banco Cajá</p>
+                    <img src={`./assets/${productImagePath}`} alt={product} />
+                    <p>{product}</p>
                 </div>
             </td>
 
@@ -15,17 +29,18 @@ export const TableItem = () => {
 
             <td>
                 <div className="colors">
-                    <p>Madeira escura; Madeira média</p>
+                    {colors.map((color) => (
+                        <p>{color}</p>
+                    ))}
                 </div>
             </td>
             <td className="empty"></td>
 
             <td>
                 <div className="specifications">
-                    <CardSpecification>braço</CardSpecification>
-                    <CardSpecification>sem braço</CardSpecification>
-                    <CardSpecification>sem braço</CardSpecification>
-                    <CardSpecification>sem braço</CardSpecification>
+                    {specifications.map((specification) => (
+                        <CardSpecification>{specification}</CardSpecification>
+                    ))}
                 </div>
             </td>
 
@@ -33,8 +48,11 @@ export const TableItem = () => {
 
             <td>
                 <div className="status">
-                    <p>Ativo</p>
-                    <img src="./assets/active.svg" alt="" />
+                    <p>{status ? "Ativo" : "Inativo"}</p>
+                    <img
+                        src="./assets/active.svg"
+                        alt={status ? "Status Ativo" : "Status Inativo"}
+                    />
                 </div>
             </td>
         </Item>

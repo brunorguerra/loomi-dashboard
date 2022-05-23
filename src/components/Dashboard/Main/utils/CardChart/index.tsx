@@ -1,5 +1,6 @@
+import { ReactNode } from "react";
 import { Container } from "./styles";
 
-export const CardChart = () => {
-    return <Container></Container>;
+export const CardChart = ({ children }: { children: ReactNode }) => {
+    return <Container>{children}</Container>;
 };

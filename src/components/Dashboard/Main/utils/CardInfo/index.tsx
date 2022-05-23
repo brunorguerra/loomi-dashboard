@@ -1,14 +1,20 @@
 import { Container } from "./styles";
 
-export const CardInfo = () => {
+interface CardInfoProps {
+    title: string;
+    amount: string;
+    description?: string;
+}
+
+export const CardInfo = ({ title, description, amount }: CardInfoProps) => {
     return (
         <Container>
-            <h3>Ticket médio últimas 24h</h3>
+            <h3>{title}</h3>
             <div className="countdown">
-                <p>+ 15 %</p>
+                <p>{amount}</p>
             </div>
             <div className="warning">
-                <p>em relação a ontem</p>
+                <p>{description}</p>
             </div>
             <div className="amount">
                 <p>

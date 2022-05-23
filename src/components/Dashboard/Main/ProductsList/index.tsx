@@ -40,9 +40,27 @@ export const ProductsList = () => {
                     </thead>
 
                     <tbody>
-                        <TableItem />
-                        <TableItem />
-                        <TableItem />
+                        <TableItem
+                            productImagePath="banco.png"
+                            product="Banco Cajá"
+                            colors={["Madeira Escura;"]}
+                            specifications={["braço", "sem braço", "sem braço"]}
+                            status={true}
+                        />
+                        <TableItem
+                            productImagePath="banco.png"
+                            product="Banco Cajá"
+                            colors={["Madeira Escura;"]}
+                            specifications={["braço", "sem braço", "sem braço"]}
+                            status={true}
+                        />
+                        <TableItem
+                            productImagePath="banco.png"
+                            product="Banco Cajá"
+                            colors={["Madeira Escura;"]}
+                            specifications={["braço", "sem braço", "sem braço"]}
+                            status={true}
+                        />
                     </tbody>
                 </table>
             </div>

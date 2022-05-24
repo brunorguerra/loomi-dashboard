@@ -1,6 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import { useState } from "react";
-import { ChartType } from "./types/ChartType";
+import { ChartType } from "../../../../../types/ChartType";
 
 export const ProfitExpectationChart = () => {
     const [chartProps, setChartProps] = useState<ChartType>({

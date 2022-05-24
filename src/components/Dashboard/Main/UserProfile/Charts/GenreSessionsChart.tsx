@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import { ChartType } from "./types/ChartType";
+import { ChartType } from "../../../../../types/ChartType";
 
 export const GenreSessionsChart = () => {
     const [chartProps, setChartProps] = useState<ChartType>({

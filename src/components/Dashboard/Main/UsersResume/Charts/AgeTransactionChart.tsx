@@ -1,37 +1,35 @@
 import ReactApexChart from "react-apexcharts";
-import { useState } from "react";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const MonthOrdersChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
+type AgeTransactionChartProps = {
+    data: number[];
+};
+
+export const AgeTransactionChart = ({ data }: AgeTransactionChartProps) => {
+    const chartProps: ChartType = {
         series: [
             {
-                name: "Pedidos",
-                data: [21, 22, 10, 28, 16, 21, 13, 30, 55, 23, 40, 11],
+                data: data,
             },
         ],
         options: {
             chart: {
-                height: 350,
                 type: "bar",
+                height: 350,
                 fontFamily: "Ubuntu",
             },
             colors: ["#393C56"],
             plotOptions: {
                 bar: {
-                    columnWidth: "40px",
-                    distributed: true,
                     borderRadius: 4,
+                    horizontal: true,
                 },
             },
             dataLabels: {
                 enabled: false,
             },
-            grid: {
-                show: false,
-            },
             title: {
-                text: "Pedidos por mês",
+                text: "Transações por idade",
                 align: "left",
                 margin: 50,
                 offsetX: 10,
@@ -41,23 +39,27 @@ export const MonthOrdersChart = () => {
                     color: "#333333",
                 },
             },
-            legend: {
-                show: false,
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
             },
             xaxis: {
                 categories: [
-                    "JAN",
-                    "FEV",
-                    "MAR",
-                    "ABR",
-                    "MAI",
-                    "JUN",
-                    "JUL",
-                    "AGO",
-                    "SET",
-                    "OUT",
-                    "NOV",
-                    "DEZ",
+                    "-18",
+                    "18-24",
+                    "25-34",
+                    "35-44",
+                    "45-54",
+                    "55-64",
+                    "65+",
                 ],
                 labels: {
                     style: {
@@ -68,10 +70,16 @@ export const MonthOrdersChart = () => {
                 },
             },
             yaxis: {
-                show: false,
+                labels: {
+                    style: {
+                        colors: ["#4D4141"],
+                        fontSize: "12px",
+                        fontWeight: "bold",
+                    },
+                },
             },
         },
-    });
+    };
 
     return (
         <ReactApexChart

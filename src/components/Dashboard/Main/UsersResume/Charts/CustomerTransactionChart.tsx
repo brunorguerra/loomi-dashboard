@@ -1,10 +1,15 @@
-import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const CustomerTransactionChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
-        series: [4123, 2345],
+type CustomerTransactionChartProps = {
+    data: number[];
+};
+
+export const CustomerTransactionChart = ({
+    data,
+}: CustomerTransactionChartProps) => {
+    const chartProps: ChartType = {
+        series: data,
         options: {
             chart: {
                 type: "donut",
@@ -39,7 +44,7 @@ export const CustomerTransactionChart = () => {
                 },
             ],
         },
-    });
+    };
 
     return (
         <ReactApexChart

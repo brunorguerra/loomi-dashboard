@@ -5,22 +5,38 @@ import { MonthOrdersChart } from "./Charts/MonthOrdersChart";
 import { ProfitExpectationChart } from "./Charts/ProfitExpectationChart";
 import { MadeOrdersChart } from "./Charts/MadeOrdersChart";
 import { CategoryOrdersChart } from "./Charts/CategoryOrdersChart";
+import { useContext } from "react";
+import { SalesDashboardContext } from "../../../../contexts/Dashboard/SalesDashboardContext";
 
-export const Sales = () => {
+export const SalesDashboard = () => {
+    const {
+        sellsMonth,
+        profitMonth,
+        expectationProfitMonth,
+        ordersMonth,
+        canceledOrdersMonth,
+    } = useContext(SalesDashboardContext);
+
     return (
         <Container>
             <TitleSection>Dashboard de vendas</TitleSection>
             <div className="content-sales">
                 <CardChart key={Math.random()}>
-                    <MonthOrdersChart />
+                    <MonthOrdersChart data={sellsMonth} />
                 </CardChart>
 
                 <CardChart key={Math.random()}>
-                    <ProfitExpectationChart />
+                    <ProfitExpectationChart
+                        profit={profitMonth}
+                        expectationProfit={expectationProfitMonth}
+                    />
                 </CardChart>
 
                 <CardChart key={Math.random()}>
-                    <MadeOrdersChart />
+                    <MadeOrdersChart
+                        madeOrders={ordersMonth}
+                        canceledOrders={canceledOrdersMonth}
+                    />
                 </CardChart>
 
                 <CardChart key={Math.random()}>

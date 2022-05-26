@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { DashboardContext } from "../../../../contexts/DashboardContext";
+import { ProductsListContext } from "../../../../contexts/Dashboard/ProductsListContext";
 import { PaginationProductList } from "./PaginationProductList";
 import { Container } from "./styles";
 import { TableItem } from "./TableItem";
@@ -7,12 +7,12 @@ import { TableItem } from "./TableItem";
 export const ProductsList = () => {
     const {
         productsList,
-        currentPageList,
-        pageAmountList,
+        currentPage,
+        totalPages,
         backPage,
         forwardPage,
         findProduct,
-    } = useContext(DashboardContext);
+    } = useContext(ProductsListContext);
     const inputProductsRef = useRef<HTMLInputElement>(null);
 
     return (
@@ -64,20 +64,24 @@ export const ProductsList = () => {
                         {productsList.map((product, index) => (
                             <TableItem
                                 key={index}
-                                productImagePath={product.imagePath}
                                 product={product.name}
-                                colors={product.colors}
-                                specifications={product.specifications}
-                                status={product.statusItem}
+                                color={product.color}
+                                status={product.status}
                             />
                         ))}
+                        {totalPages === 0 && (
+                            <tr className="productNotFound">
+                                <td>
+                                    <p>Produto não encontrado</p>
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
-
             <PaginationProductList
-                currentPage={currentPageList + 1}
-                totalPage={pageAmountList}
+                currentPage={currentPage}
+                totalPage={totalPages}
                 backFunction={backPage}
                 forwardFunction={forwardPage}
             />

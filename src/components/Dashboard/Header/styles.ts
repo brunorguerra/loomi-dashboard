@@ -33,8 +33,14 @@ export const Container = styled.header`
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
             p {
                 font-size: 2.2rem;
+            }
+            img {
+                max-width: 100%;
+                width: auto;
+                object-fit: cover;
             }
         }
     }

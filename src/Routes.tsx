@@ -4,14 +4,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 export const AppRoutes = () => {
     return (
         <Routes>
-            <Route
-                path="*"
-                element={
-                    <PrivateRoute>
-                        <Dashboard />
-                    </PrivateRoute>
-                }
-            />
+            <Route path="/" element={<Dashboard />} />
         </Routes>
     );
 };

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const DeviceTransactionChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
-        series: [68950, 85321],
+export const CategoryOrdersChart = () => {
+    const chartProps: ChartType = {
+        series: [44, 55, 41, 17, 15],
         options: {
             chart: {
                 type: "donut",
@@ -12,9 +11,15 @@ export const DeviceTransactionChart = () => {
             dataLabels: {
                 enabled: false,
             },
-            labels: ["Desktop", "Mobile"],
+            labels: [
+                "Mesa Eva Preta",
+                "Mesa Eva Verde",
+                "Mesa Eva Azul",
+                "Mesa Eva Vermelho",
+                "Mesa Eva Laranja",
+            ],
             title: {
-                text: "Transações por aparelho",
+                text: "Pedidos por categoria",
                 align: "left",
                 margin: 50,
                 offsetX: 10,
@@ -24,7 +29,7 @@ export const DeviceTransactionChart = () => {
                     color: "#333333",
                 },
             },
-            colors: ["#EC657A", "#252E48"],
+            colors: ["#252E48", "#7BB686", "#9FD8D5", "#EC657A", "#F7C982"],
             responsive: [
                 {
                     breakpoint: 480,
@@ -39,7 +44,7 @@ export const DeviceTransactionChart = () => {
                 },
             ],
         },
-    });
+    };
 
     return (
         <ReactApexChart

@@ -1,9 +1,8 @@
-import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const GenreSessionsChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
+export const DeviceTransactionChart = () => {
+    const chartProps: ChartType = {
         series: [68950, 85321],
         options: {
             chart: {
@@ -12,9 +11,9 @@ export const GenreSessionsChart = () => {
             dataLabels: {
                 enabled: false,
             },
-            labels: ["Masculino", "Feminino"],
+            labels: ["Desktop", "Mobile"],
             title: {
-                text: "Pedidos por categoria",
+                text: "Transações por aparelho",
                 align: "left",
                 margin: 50,
                 offsetX: 10,
@@ -24,7 +23,7 @@ export const GenreSessionsChart = () => {
                     color: "#333333",
                 },
             },
-            colors: ["#F7C982", "#252E48"],
+            colors: ["#EC657A", "#252E48"],
             responsive: [
                 {
                     breakpoint: 480,
@@ -39,7 +38,7 @@ export const GenreSessionsChart = () => {
                 },
             ],
         },
-    });
+    };
 
     return (
         <ReactApexChart

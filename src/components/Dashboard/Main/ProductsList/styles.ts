@@ -148,6 +148,13 @@ export const Container = styled.section`
                             min-width: 15rem;
                         }
                     }
+                    &.productNotFound {
+                        width: 100%;
+                        text-align: left;
+                        text-transform: uppercase;
+                        font-size: 1.8rem;
+                        padding: 6rem 0 6rem 4rem;
+                    }
                 }
             }
         }

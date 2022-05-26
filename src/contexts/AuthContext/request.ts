@@ -16,7 +16,7 @@ export async function LoginRequest({ email, password }: LoginRequestProps) {
 
 export const UserExistsRequest = async (token: string) => {
     try {
-        const response = await Api.post("/users", { token });
+        const response = await Api.post("/login", { token });
         return response.data;
     } catch (error) {
         return null;

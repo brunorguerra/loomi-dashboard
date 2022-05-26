@@ -1,10 +1,13 @@
-import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const CategoryOrdersChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
-        series: [44, 55, 41, 17, 15],
+type GenreSessionsChartProps = {
+    data: number[];
+};
+
+export const GenreSessionsChart = ({ data }: GenreSessionsChartProps) => {
+    const chartProps: ChartType = {
+        series: data,
         options: {
             chart: {
                 type: "donut",
@@ -12,13 +15,7 @@ export const CategoryOrdersChart = () => {
             dataLabels: {
                 enabled: false,
             },
-            labels: [
-                "Mesa Eva Preta",
-                "Mesa Eva Verde",
-                "Mesa Eva Azul",
-                "Mesa Eva Vermelho",
-                "Mesa Eva Laranja",
-            ],
+            labels: ["Masculino", "Feminino"],
             title: {
                 text: "Pedidos por categoria",
                 align: "left",
@@ -30,7 +27,7 @@ export const CategoryOrdersChart = () => {
                     color: "#333333",
                 },
             },
-            colors: ["#252E48", "#7BB686", "#9FD8D5", "#EC657A", "#F7C982"],
+            colors: ["#F7C982", "#252E48"],
             responsive: [
                 {
                     breakpoint: 480,
@@ -45,7 +42,7 @@ export const CategoryOrdersChart = () => {
                 },
             ],
         },
-    });
+    };
 
     return (
         <ReactApexChart

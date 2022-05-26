@@ -43,7 +43,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     function logout() {
         setIsAuthenticate(false);
         removeCookies("payload-loomi");
-        navigate("/login", {});
     }
 
     useEffect(() => {

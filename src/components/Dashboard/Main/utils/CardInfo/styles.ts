@@ -16,7 +16,7 @@ export const Container = styled.div`
         font-weight: bold;
         font-size: 1.6rem;
     }
-    .countdown {
+    .growth {
         margin-top: 1.2rem;
         padding: 0.5rem 1rem;
         border-radius: 2rem;

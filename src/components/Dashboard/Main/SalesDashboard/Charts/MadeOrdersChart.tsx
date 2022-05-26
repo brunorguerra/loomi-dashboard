@@ -1,45 +1,28 @@
 import ReactApexChart from "react-apexcharts";
-import { useState } from "react";
 import { ChartType } from "../../../../../types/ChartType";
 
-export const ProfitExpectationChart = () => {
-    const [chartProps, setChartProps] = useState<ChartType>({
+type MadeOrdersChartProps = {
+    madeOrders: number[];
+    canceledOrders: number[];
+};
+
+export const MadeOrdersChart = ({
+    madeOrders,
+    canceledOrders,
+}: MadeOrdersChartProps) => {
+    const chartProps: ChartType = {
         series: [
             {
-                name: "Real",
+                name: "Pedidos realizados",
                 type: "column",
-                data: [
-                    60200, 67300, 65000, 72800, 55903, 64503, 90302, 129292,
-                    129292, 121034, 153902, 163289,
-                ],
-                color: "#9FD8D5",
+                data: madeOrders,
+                color: "#109E8E",
             },
             {
-                name: "Expectativa",
+                name: "Pedidos cancelados",
                 type: "column",
-                data: [
-                    55300, 62903, 68327, 75090, 80389, 90489, 102933, 111209,
-                    130300, 143022, 155303, 163042,
-                ],
-                color: "#F78899",
-            },
-            {
-                name: "Real do ano anterior",
-                type: "line",
-                data: [
-                    5390, 6200, 6800, 7885, 10900, 12000, 16500, 17000, 25492,
-                    25492, 30120, 50300,
-                ],
-                color: "#393C56",
-            },
-            {
-                name: "Expectativa do ano anterior",
-                type: "line",
-                data: [
-                    5900, 6400, 7200, 7850, 9002, 12300, 16000, 25000, 28590,
-                    28590, 35000, 40020,
-                ],
-                color: "#E0347D",
+                data: canceledOrders,
+                color: "#F18F7F",
             },
         ],
         options: {
@@ -60,10 +43,10 @@ export const ProfitExpectationChart = () => {
                 enabled: false,
             },
             stroke: {
-                width: [1, 1, 2, 2],
+                width: [1, 1],
             },
             title: {
-                text: "Expectativa de lucro x lucro real",
+                text: "Pedidos realizados x pedidos cancelados",
                 align: "left",
                 margin: 50,
                 offsetX: 10,
@@ -100,20 +83,13 @@ export const ProfitExpectationChart = () => {
                 },
             },
             yaxis: { show: false },
-            tooltip: {
-                fixed: {
-                    enabled: true,
-                    position: "topLeft", // topRight, topLeft, bottomRight, bottomLeft
-                    offsetY: 10,
-                    offsetX: 60,
-                },
-            },
+
             legend: {
                 horizontalAlign: "left",
                 offsetX: 40,
             },
         },
-    });
+    };
 
     return (
         <ReactApexChart

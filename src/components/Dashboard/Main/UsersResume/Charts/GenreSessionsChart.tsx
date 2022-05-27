@@ -11,13 +11,14 @@ export const GenreSessionsChart = ({ data }: GenreSessionsChartProps) => {
         options: {
             chart: {
                 type: "donut",
+                fontFamily: "Ubuntu",
             },
             dataLabels: {
                 enabled: false,
             },
             labels: ["Masculino", "Feminino"],
             title: {
-                text: "Pedidos por categoria",
+                text: "Sessões por gênero",
                 align: "left",
                 margin: 50,
                 offsetX: 10,
@@ -41,6 +42,11 @@ export const GenreSessionsChart = ({ data }: GenreSessionsChartProps) => {
                     },
                 },
             ],
+            tooltip: {
+                style: {
+                    fontSize: "20px",
+                },
+            },
         },
     };
 

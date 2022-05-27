@@ -15,6 +15,10 @@ export const Container = styled.div`
         color: var(--title);
         font-weight: bold;
         font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .growth {
         margin-top: 1.2rem;
@@ -29,6 +33,7 @@ export const Container = styled.div`
         }
     }
     .warning {
+        height: 2rem;
         margin-top: 1rem;
         p {
             font-size: 1.4rem;
@@ -38,18 +43,13 @@ export const Container = styled.div`
     .amount {
         margin-top: 1.8rem;
         p {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            span {
-                color: var(--title);
-                &:first-of-type {
-                    font-size: 1.6rem;
-                }
-                &:last-of-type {
-                    font-size: 2rem;
-                    font-weight: bold;
-                }
+            color: var(--title);
+            font-size: 2rem;
+            font-weight: bold;
+            span.label {
+                margin-left: 1rem;
+                font-size: 1.6rem;
+                font-weight: normal;
             }
         }
     }

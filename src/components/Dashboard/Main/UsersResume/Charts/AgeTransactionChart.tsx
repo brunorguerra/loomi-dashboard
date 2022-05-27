@@ -9,6 +9,7 @@ export const AgeTransactionChart = ({ data }: AgeTransactionChartProps) => {
     const chartProps: ChartType = {
         series: [
             {
+                name: "Transações",
                 data: data,
             },
         ],
@@ -17,6 +18,18 @@ export const AgeTransactionChart = ({ data }: AgeTransactionChartProps) => {
                 type: "bar",
                 height: 350,
                 fontFamily: "Ubuntu",
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        reset: false,
+                        selection: false,
+                        pan: false,
+                    },
+                },
             },
             colors: ["#393C56"],
             plotOptions: {
@@ -51,16 +64,14 @@ export const AgeTransactionChart = ({ data }: AgeTransactionChartProps) => {
                     },
                 },
             },
+            labels: ["-18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"],
+            noData: {
+                text: "Dados não encontrados",
+                style: {
+                    fontSize: "18px",
+                },
+            },
             xaxis: {
-                categories: [
-                    "-18",
-                    "18-24",
-                    "25-34",
-                    "35-44",
-                    "45-54",
-                    "55-64",
-                    "65+",
-                ],
                 labels: {
                     style: {
                         colors: ["#4D4141"],
@@ -77,6 +88,15 @@ export const AgeTransactionChart = ({ data }: AgeTransactionChartProps) => {
                         fontWeight: "bold",
                     },
                 },
+            },
+            tooltip: {
+                y: {
+                    formatter: (value) => String(Math.ceil(value)),
+                },
+                style: {
+                    fontSize: "20px",
+                },
+                intersect: false,
             },
         },
     };

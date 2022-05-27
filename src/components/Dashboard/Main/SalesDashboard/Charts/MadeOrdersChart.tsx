@@ -31,6 +31,18 @@ export const MadeOrdersChart = ({
                 type: "line",
                 stacked: false,
                 fontFamily: "Ubuntu",
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        reset: false,
+                        selection: false,
+                        pan: false,
+                    },
+                },
             },
             plotOptions: {
                 bar: {
@@ -83,7 +95,11 @@ export const MadeOrdersChart = ({
                 },
             },
             yaxis: { show: false },
-
+            tooltip: {
+                style: {
+                    fontSize: "16px",
+                },
+            },
             legend: {
                 horizontalAlign: "left",
                 offsetX: 40,

@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const Api = axios.create({
-    baseURL: "https://628bf017667aea3a3e387e51.mockapi.io",
+    baseURL: process.env.REACT_APP_API,
 });

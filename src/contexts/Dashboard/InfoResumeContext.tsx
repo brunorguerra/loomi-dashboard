@@ -34,20 +34,36 @@ export const InfoResumeProvider = ({ children }: ProviderPropsType) => {
     const [runningOutStock, setRunningOutStock] = useState({} as AlertsProps);
 
     async function getAllInfoResumeData() {
-        const avgTicketDay = await getDataOfRequest("/avg-ticket-day");
-        const avgTicketMonth = await getDataOfRequest("/avg-ticket-month");
-        const ordersMonth = await getDataOfRequest("/orders-month");
-        const sellsMonth = await getDataOfRequest("/sells-month");
-        const [alertMaintenance, alertRunOutStock] = await getDataOfRequest(
-            "/alerts"
-        );
+        const endpoints = [
+            "/avg-ticket-day",
+            "/avg-ticket-month",
+            "/orders-month",
+            "/sells-month",
+            "/alerts",
+        ];
 
-        setTicketDay(avgTicketDay);
-        setTicketMonth(avgTicketMonth);
-        setOrdersMonth(ordersMonth);
-        setSellsMonth(sellsMonth);
-        setMaintenanceProducts(alertMaintenance);
-        setRunningOutStock(alertRunOutStock);
+        try {
+            const promises = endpoints.map(async (endpoint) => {
+                const data = await getDataOfRequest(endpoint);
+                return data;
+            });
+            const [
+                avgTicketDay,
+                avgTicketMonth,
+                ordersMonth,
+                sellsMonth,
+                alerts,
+            ] = await Promise.all(promises);
+
+            setTicketDay(avgTicketDay);
+            setTicketMonth(avgTicketMonth);
+            setOrdersMonth(ordersMonth);
+            setSellsMonth(sellsMonth);
+            setMaintenanceProducts(alerts[0]);
+            setRunningOutStock(alerts[1]);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {

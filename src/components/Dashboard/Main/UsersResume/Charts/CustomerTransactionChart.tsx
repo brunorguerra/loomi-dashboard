@@ -13,6 +13,7 @@ export const CustomerTransactionChart = ({
         options: {
             chart: {
                 type: "donut",
+                fontFamily: "Ubuntu",
             },
             dataLabels: {
                 enabled: false,
@@ -43,6 +44,16 @@ export const CustomerTransactionChart = ({
                     },
                 },
             ],
+            yaxis: {
+                labels: {
+                    formatter: (value) => `${Math.ceil(value)} transações`,
+                },
+            },
+            tooltip: {
+                style: {
+                    fontSize: "20px",
+                },
+            },
         },
     };
 

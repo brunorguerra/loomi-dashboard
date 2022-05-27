@@ -9,5 +9,9 @@ interface PrivateRouteProps {
 export const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const { isAuthenticate } = useContext(AuthContext);
 
-    return isAuthenticate ? children : <PanelLogin />;
+    if (!isAuthenticate) {
+        return <PanelLogin />;
+    }
+
+    return children;
 };

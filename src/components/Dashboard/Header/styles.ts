@@ -17,8 +17,12 @@ export const Container = styled.header`
         }
     }
     .profile-header {
+        cursor: pointer;
+        padding: 1rem;
         display: flex;
         align-items: center;
+        border: 0.1rem solid transparent;
+        border-radius: 0.5rem;
         gap: 1rem;
         p {
             font-size: 1.6rem;
@@ -42,6 +46,9 @@ export const Container = styled.header`
                 width: auto;
                 object-fit: cover;
             }
+        }
+        &:active {
+            border: 0.1rem solid var(--boxShadow);
         }
     }
 `;

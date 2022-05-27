@@ -27,6 +27,12 @@ export const Container = styled.div`
             img {
                 max-width: 100%;
                 width: auto;
+                transition: all 0.25s ease;
+            }
+            &:active {
+                img {
+                    transform: scale(1.2);
+                }
             }
         }
     }

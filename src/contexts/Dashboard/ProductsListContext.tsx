@@ -6,6 +6,7 @@ interface ProductsListContextData {
     productsList: ProductsListData[];
     currentPage: number;
     totalPages: number;
+    loadingList: boolean;
     forwardPage: () => void;
     backPage: () => void;
     findProduct: (value: string) => void;
@@ -23,6 +24,8 @@ export const ProductsListProvider = ({ children }: ProviderPropsType) => {
     const [productsList, setProductsList] = useState<ProductsListData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [valueSearch, setValueSearch] = useState("");
+    const [loadingList, setLoadingList] = useState(true);
 
     function forwardPage() {
         currentPage < totalPages && setCurrentPage(currentPage + 1);
@@ -33,10 +36,12 @@ export const ProductsListProvider = ({ children }: ProviderPropsType) => {
     }
 
     function findProduct(value: string) {
-        getAllProducts(value);
+        setValueSearch(value);
+        setCurrentPage(1);
     }
 
     async function getAllProducts(valueSearch: string) {
+        setLoadingList(true);
         try {
             const { data: dataTotal } = await Api.get("/products", {
                 params: { search: valueSearch },
@@ -48,12 +53,14 @@ export const ProductsListProvider = ({ children }: ProviderPropsType) => {
             setProductsList(data);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoadingList(false);
         }
     }
 
     useEffect(() => {
-        getAllProducts("");
-    }, [currentPage]);
+        getAllProducts(valueSearch);
+    }, [currentPage, valueSearch]);
 
     return (
         <ProductsListContext.Provider
@@ -61,6 +68,7 @@ export const ProductsListProvider = ({ children }: ProviderPropsType) => {
                 productsList,
                 currentPage,
                 totalPages,
+                loadingList,
                 backPage,
                 forwardPage,
                 findProduct,

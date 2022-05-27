@@ -1,1 +1,0 @@
-Introduzido Vários tipos de gráficos utilizando o ApexCharts JS, e adicionado propriedades em componentes dinâmicos reutilizáveis.

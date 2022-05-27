@@ -24,14 +24,16 @@ export const ConversionFunnel = () => {
                     title="Sessões"
                     growth={totalDay.growth}
                     description="em relação a ontem"
-                    amount={`${totalDay.value} visualizações`}
+                    amount={`${totalDay.value}`}
+                    label="visualizações"
                     color={totalDay.growth < 0 ? "#D6628E" : "#109E8E"}
                 />
                 <CardInfo
                     title="Visualizações de Produto"
                     growth={productsViewMonth.growth}
                     description={`em relação a ${getPreviousMonth()}`}
-                    amount={`${productsViewMonth.value} visualizações`}
+                    amount={`${productsViewMonth.value}`}
+                    label="visualizações"
                     color={productsViewMonth.growth < 0 ? "#D6628E" : "#109E8E"}
                 />
                 <CardInfo
@@ -49,14 +51,16 @@ export const ConversionFunnel = () => {
                     title="Adições ao Carrinho"
                     growth={addCartMonth.growth}
                     description={`em relação a ${getPreviousMonth()}`}
-                    amount={`${addCartMonth.value} produtos`}
+                    amount={`${addCartMonth.value}`}
+                    label="produtos"
                     color={addCartMonth.growth < 0 ? "#D6628E" : "#109E8E"}
                 />
                 <CardInfo
                     title="Checkout - Frete"
                     growth={checkoutShippingMonth.growth}
                     description={`em relação a ${getPreviousMonth()}`}
-                    amount={`${checkoutShippingMonth.value} usuários`}
+                    amount={`${checkoutShippingMonth.value}`}
+                    label="usuários"
                     color={
                         checkoutShippingMonth.growth < 0 ? "#D6628E" : "#109E8E"
                     }
@@ -65,7 +69,8 @@ export const ConversionFunnel = () => {
                     title="Checkout - E-mail"
                     growth={checkoutEmailMonth.growth}
                     description={`em relação a ${getPreviousMonth()}`}
-                    amount={`${checkoutEmailMonth.value} usuários`}
+                    amount={`${checkoutEmailMonth.value}`}
+                    label="usuários"
                     color={
                         checkoutEmailMonth.growth < 0 ? "#D6628E" : "#109E8E"
                     }
@@ -74,7 +79,8 @@ export const ConversionFunnel = () => {
                     title="Checkout - Cadastro"
                     growth={checkoutRegistrationMonth.growth}
                     description={`em relação a ${getPreviousMonth()}`}
-                    amount={`${checkoutRegistrationMonth.value} usuários`}
+                    amount={`${checkoutRegistrationMonth.value}`}
+                    label="usuários"
                     color={
                         checkoutRegistrationMonth.growth < 0
                             ? "#D6628E"

@@ -25,6 +25,20 @@ export function getPreviousMonth() {
     return monthOfYear[currentMonth - 1];
 }
 
+export function formatCurrent(value: number | string) {
+    let signal = Number(value) < 0 ? "-" : "";
+
+    value = String(value).replace(/\D/g, "");
+    value = Number(value) / 100;
+
+    value = value.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    });
+
+    return signal + value;
+}
+
 export const InfoResume = () => {
     const {
         ticketDay,
@@ -34,20 +48,6 @@ export const InfoResume = () => {
         maintenanceProducts,
         runningOutStock,
     } = useContext(InfoResumeContext);
-
-    function formatCurrent(value: number | string) {
-        let signal = Number(value) < 0 ? "-" : "";
-
-        value = String(value).replace(/\D/g, "");
-        value = Number(value) / 100;
-
-        value = value.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-        });
-
-        return signal + value;
-    }
 
     return (
         <Container>
@@ -72,7 +72,8 @@ export const InfoResume = () => {
                 <CardInfo
                     title="Produtos em manutenção"
                     date={maintenanceProducts.since}
-                    amount={`${maintenanceProducts.value} produtos`}
+                    amount={`${maintenanceProducts.value}`}
+                    label="produtos"
                     description=""
                     color={
                         maintenanceProducts.value > 0 ? "#D6628E" : "#109E8E"
@@ -81,7 +82,8 @@ export const InfoResume = () => {
                 <CardInfo
                     title="Acabando o estoque"
                     date={runningOutStock.since}
-                    amount={`${runningOutStock.value} produtos`}
+                    amount={`${runningOutStock.value}`}
+                    label="produtos"
                     description={
                         runningOutStock.value ? "repor o quanto antes" : ""
                     }
@@ -90,14 +92,16 @@ export const InfoResume = () => {
                 <CardInfo
                     title="Pedidos realizados no mês"
                     growth={ordersMonth.growth}
-                    amount={`${ordersMonth.value} pedidos`}
+                    amount={`${ordersMonth.value}`}
+                    label="pedidos"
                     description={`em relação a ${getPreviousMonth()}`}
                     color={ordersMonth.growth < 0 ? "#D6628E" : "#109E8E"}
                 />
                 <CardInfo
                     title="Produtos vendidos no mês"
                     growth={sellsMonth.growth}
-                    amount={`${sellsMonth.value} produtos`}
+                    amount={`${sellsMonth.value}`}
+                    label="produtos"
                     description={`em relação a ${getPreviousMonth()}`}
                     color={sellsMonth.growth < 0 ? "#D6628E" : "#109E8E"}
                 />

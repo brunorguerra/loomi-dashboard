@@ -7,6 +7,7 @@ interface CardInfoProps {
     description?: string;
     amount: string;
     color: string;
+    label?: string;
 }
 
 export const CardInfo = ({
@@ -16,6 +17,7 @@ export const CardInfo = ({
     date,
     amount,
     color,
+    label,
 }: CardInfoProps) => {
     function formatGrowth() {
         if (growth !== undefined && growth > 0) {
@@ -52,7 +54,10 @@ export const CardInfo = ({
                 <p style={{ color }}>{description}</p>
             </div>
             <div className="amount">
-                <p>{amount}</p>
+                <p>
+                    {amount}
+                    <span className="label">{label}</span>
+                </p>
             </div>
         </Container>
     );

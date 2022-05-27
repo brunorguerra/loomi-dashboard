@@ -14,6 +14,11 @@ export const MonthOrdersChart = ({ data }: { data: number[] }) => {
                 height: 350,
                 type: "bar",
                 fontFamily: "Ubuntu",
+                toolbar: {
+                    tools: {
+                        download: false,
+                    },
+                },
             },
             colors: ["#393C56"],
             plotOptions: {
@@ -68,6 +73,11 @@ export const MonthOrdersChart = ({ data }: { data: number[] }) => {
             },
             yaxis: {
                 show: false,
+            },
+            tooltip: {
+                style: {
+                    fontSize: "16px",
+                },
             },
         },
     };

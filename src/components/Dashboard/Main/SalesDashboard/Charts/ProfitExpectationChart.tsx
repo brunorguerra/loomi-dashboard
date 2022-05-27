@@ -1,5 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import { ChartType } from "../../../../../types/ChartType";
+import { formatCurrent } from "../../InfoResume";
 
 type ProfitExpectationChartProps = {
     profit: number[];
@@ -43,12 +44,24 @@ export const ProfitExpectationChart = ({
                 type: "line",
                 stacked: false,
                 fontFamily: "Ubuntu",
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        reset: false,
+                        selection: false,
+                        pan: false,
+                    },
+                },
             },
             plotOptions: {
                 bar: {
                     columnWidth: "80px",
                     distributed: false,
-                    borderRadius: [3, 3, 0, 0],
+                    borderRadius: [2, 2, 0, 0],
                 },
             },
             dataLabels: {
@@ -94,13 +107,22 @@ export const ProfitExpectationChart = ({
                     },
                 },
             },
-            yaxis: { show: false },
+            yaxis: {
+                show: false,
+            },
             tooltip: {
                 fixed: {
                     enabled: true,
                     position: "topLeft", // topRight, topLeft, bottomRight, bottomLeft
                     offsetY: 10,
                     offsetX: 60,
+                },
+                y: {
+                    formatter: (value) => formatCurrent(value),
+                },
+                intersect: false,
+                style: {
+                    fontSize: "16px",
                 },
             },
             legend: {

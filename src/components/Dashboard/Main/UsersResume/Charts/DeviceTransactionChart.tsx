@@ -7,6 +7,7 @@ export const DeviceTransactionChart = () => {
         options: {
             chart: {
                 type: "donut",
+                fontFamily: "Ubuntu",
             },
             dataLabels: {
                 enabled: false,
@@ -37,6 +38,16 @@ export const DeviceTransactionChart = () => {
                     },
                 },
             ],
+            yaxis: {
+                labels: {
+                    formatter: (value) => `${Math.ceil(value)} transações`,
+                },
+            },
+            tooltip: {
+                style: {
+                    fontSize: "20px",
+                },
+            },
         },
     };
 

@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import { ProductsListContext } from "../../../../contexts/Dashboard/ProductsListContext";
+import { LoadingList } from "./LoadingList";
 import { PaginationProductList } from "./PaginationProductList";
 import { Container } from "./styles";
 import { TableItem } from "./TableItem";
@@ -9,6 +10,7 @@ export const ProductsList = () => {
         productsList,
         currentPage,
         totalPages,
+        loadingList,
         backPage,
         forwardPage,
         findProduct,
@@ -37,47 +39,51 @@ export const ProductsList = () => {
             </div>
 
             <div className="content-productsList">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produto</th>
+                {loadingList ? (
+                    <LoadingList />
+                ) : (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
 
-                            <th className="empty"></th>
+                                <th className="empty"></th>
 
-                            <th>Cores</th>
+                                <th>Cores</th>
 
-                            <th className="separator">
-                                <div className="line"></div>
-                            </th>
+                                <th className="separator">
+                                    <div className="line"></div>
+                                </th>
 
-                            <th>Especificações</th>
+                                <th>Especificações</th>
 
-                            <th className="separator">
-                                <div className="line"></div>
-                            </th>
+                                <th className="separator">
+                                    <div className="line"></div>
+                                </th>
 
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {productsList.map((product, index) => (
-                            <TableItem
-                                key={index}
-                                product={product.name}
-                                color={product.color}
-                                status={product.status}
-                            />
-                        ))}
-                        {totalPages === 0 && (
-                            <tr className="productNotFound">
-                                <td>
-                                    <p>Produto não encontrado</p>
-                                </td>
+                                <th>Status</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+
+                        <tbody>
+                            {productsList.map((product, index) => (
+                                <TableItem
+                                    key={index}
+                                    product={product.name}
+                                    color={product.color}
+                                    status={product.status}
+                                />
+                            ))}
+                            {totalPages === 0 && (
+                                <tr className="productNotFound">
+                                    <td>
+                                        <p>Produto não encontrado</p>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                )}
             </div>
             <PaginationProductList
                 currentPage={currentPage}

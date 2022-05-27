@@ -1,4 +1,3 @@
-import { CardSpecification } from "../CardSpecification";
 import { Item } from "./styles";
 
 interface TableItemProps {

@@ -43,6 +43,11 @@ export const CategoryOrdersChart = () => {
                     },
                 },
             ],
+            tooltip: {
+                style: {
+                    fontSize: "16px",
+                },
+            },
         },
     };
 

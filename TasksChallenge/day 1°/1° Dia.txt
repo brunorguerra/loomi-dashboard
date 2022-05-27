@@ -1,3 +1,0 @@
-- Foi desenvolvido a lógica das requisições com o Axios utilizando uma API Fake;
-- Foi criado o Painel de login com autenticação e armazenamento do token nos Cookies com React-Cookies, ContextAPI para gerenciamento de dados, React-hook-form e Yup para validação do formulario de login;
-- O React-router-dom para controle de rotas e persistencia de rota, criado um componente externo para verificação de rotas privadas;
